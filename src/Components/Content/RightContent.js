@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ShowCard from "../showCard";
+import ShowCard from "./showCard";
 
 class RightContent extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class RightContent extends Component {
         return (
             <div>
                 <div id="right-content">
-                    <h2>Product : </h2>
+                    <h2>Product</h2>
                     <div id="products">
                         {
                             products.map((product) => (

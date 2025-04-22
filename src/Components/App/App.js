@@ -11,6 +11,10 @@ import Footer from '../Footer/Footer';
 import Content from '../Content/Content';
 import Items from '../Items';
 import Example from '../Example';
+import Member  from '../Member';
+import Counter from '../Counter';
+import Dtich_hcn from '../Dtich_hcn';
+import DisplayData from '../DisplayData';
 
 function One() {
   return <div>Chào bạn</div>
@@ -18,7 +22,7 @@ function One() {
 
 function App() {
   return (
-    <div className="App">
+    <div div className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <One></One>
@@ -36,11 +40,11 @@ function App() {
 
 {/* Camera Shop */}
         {/* Header */}
-        <Header></Header>
+        {/* <Header></Header> */}
         {/* Content */}
-        <Content></Content>
+        {/* <Content></Content> */}
         {/* Footer */}
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
 
         {/* <Items image="https://img.lovepik.com/free-png/20210923/lovepik-t-shirt-png-image_401190055_wh1200.png" name="Áo thun 1" price="300" />
         <Items image="https://img.lovepik.com/free-png/20210923/lovepik-t-shirt-png-image_401190055_wh1200.png" name="Áo thun 2" price="100" />
@@ -49,7 +53,11 @@ function App() {
         <Items image="https://img.lovepik.com/free-png/20210923/lovepik-t-shirt-png-image_401190055_wh1200.png" name="Áo thun 5" price="240" /> */}
         
         {/* <Example width="500px" height="200px" background="red"/> */}
-      </div>
+        {/* <Member></Member> */}
+        {/* <Counter></Counter>
+        <Dtich_hcn></Dtich_hcn> */}
+          <DisplayData></DisplayData>
+    </div>
   );
 }
 
