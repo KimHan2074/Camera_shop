@@ -10,7 +10,8 @@ class RightContent extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api-products-2-ottk.onrender.com/api/products')
+       // fetch('https://api-products-2-ottk.onrender.com/api/products')
+        fetch('https://656ca88ee1e03bfd572e9c16.mockapi.io/products')
             .then(response => response.json())
             .then(data => {
                 const filteredData = data.map(item => ({

@@ -40,11 +40,11 @@ function App() {
 
 {/* Camera Shop */}
         {/* Header */}
-        {/* <Header></Header> */}
+        <Header></Header>
         {/* Content */}
-        {/* <Content></Content> */}
+        <Content></Content>
         {/* Footer */}
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
 
         {/* <Items image="https://img.lovepik.com/free-png/20210923/lovepik-t-shirt-png-image_401190055_wh1200.png" name="Áo thun 1" price="300" />
         <Items image="https://img.lovepik.com/free-png/20210923/lovepik-t-shirt-png-image_401190055_wh1200.png" name="Áo thun 2" price="100" />
@@ -56,7 +56,7 @@ function App() {
         {/* <Member></Member> */}
         {/* <Counter></Counter>
         <Dtich_hcn></Dtich_hcn> */}
-          <DisplayData></DisplayData>
+          {/* <DisplayData></DisplayData> */}
     </div>
   );
 }
