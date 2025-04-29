@@ -1,93 +1,84 @@
 import React, { useState } from "react";
 
-const menuItems = [
-  { name: "Cà phê sữa", defaultPrice: 12000 },
-  { name: "Cà phê đá", defaultPrice: 10000 },
-  { name: "Sting dâu", defaultPrice: 8000 },
-  { name: "Trà đá", defaultPrice: 2000 },
+const menu = [
+  { name: "Cà phê sữa", price: 12000 },
+  { name: "Cà phê đá", price: 10000 },
+  { name: "Sting dâu", price: 8000 },
+  { name: "Trà đá", price: 2000 },
 ];
 
 export default function Menu() {
-  const [currentMoney, setCurrentMoney] = useState("");
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [message, setMessage] = useState("");
+  const [money, setMoney] = useState("");
 
-  const handleCheckboxChange = (itemName) => {
-    setSelectedItems((prevSelected) =>
-      prevSelected.includes(itemName)
-        ? prevSelected.filter((item) => item !== itemName) // bỏ chọn
-        : [...prevSelected, itemName] // chọn thêm
-    );
-  };
+  const [selected, setSelected] = useState([]);
 
-  const handlePayment = () => {
-    let total = 0;
-    selectedItems.forEach((itemName) => {
-      const item = menuItems.find((item) => item.name === itemName);
-      total += item.defaultPrice;
-    });
+  const [result, setResult] = useState("");
 
-    if (Number(currentMoney) >= total) {
-      setMessage(`Thanh toán thành công! Tổng tiền: ${total.toLocaleString()}₫`);
+  // Khi người dùng tick chọn/bỏ chọn món
+  function toggleSelect(itemName) {
+    if (selected.includes(itemName)) {
+      setSelected(selected.filter(name => name !== itemName)); // Nếu đã chọn thì bỏ chọn
     } else {
-      setMessage(
-        `Không đủ tiền! Tổng cần: ${total.toLocaleString()}₫. Vui lòng nhập lại số tiền.`
-      );
-      setCurrentMoney(""); // bắt nhập lại
+      setSelected([...selected, itemName]); // Nếu chưa chọn thì thêm vào
     }
-  };
+  }
+
+  function pay() {
+    let total = 0;
+    for (let name of selected) {
+      const item = menu.find(m => m.name === name);
+      total += item.price;
+    }
+
+    if (Number(money) >= total) {
+      setResult(`Thanh toán thành công! Tổng tiền: ${total.toLocaleString()}₫`);
+    } else {
+      setResult(`Không đủ tiền! Cần: ${total.toLocaleString()}₫. Vui lòng nhập lại.`);
+      setMoney(""); 
+    }
+  }
 
   return (
-    <div className="max-w-md mx-auto bg-blue-100 p-6 rounded-lg shadow-md mt-10">
-      <h1 className="text-2xl font-bold text-center mb-6">MENU</h1>
+    <div style={{ width: "400px", margin: "30px auto", padding: "20px", background: "#eef", borderRadius: "10px" }}>
+      <h1 style={{ textAlign: "center" }}>MENU</h1>
 
-      <div className="mb-4">
-        <label className="block mb-2 font-semibold">Nhập số tiền hiện tại (₫):</label>
+      <div style={{ marginBottom: "20px" }}>
+        <label>Nhập số tiền hiện tại (₫):</label>
         <input
           type="number"
-          value={currentMoney}
-          onChange={(e) => setCurrentMoney(e.target.value)}
-          className="w-full border p-2 rounded-md"
+          value={money}
+          onChange={(e) => setMoney(e.target.value)}
+          style={{ width: "100%", padding: "8px", marginTop: "5px" }}
           placeholder="VD: 50000"
         />
       </div>
 
-      <div className="bg-white p-4 rounded-lg">
-        {menuItems.map((item, index) => (
-          <div key={index} className="flex justify-between items-center border-b py-2">
-            <label className="flex items-center gap-2">
+      <div style={{ background: "white", padding: "10px", borderRadius: "8px" }}>
+        {menu.map((item, index) => (
+          <div key={index} style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+            <label>
               <input
                 type="checkbox"
-                checked={selectedItems.includes(item.name)}
-                onChange={() => handleCheckboxChange(item.name)}
+                checked={selected.includes(item.name)}
+                onChange={() => toggleSelect(item.name)}
               />
               {item.name}
             </label>
-            <span>{item.defaultPrice.toLocaleString()}₫</span>
+            <span>{item.price.toLocaleString()}₫</span>
           </div>
         ))}
       </div>
 
       <button
-        onClick={handlePayment}
-        style={{
-          width: "15%",
-          backgroundColor: "orange",
-          color: "white",
-          padding: "10px",
-          marginTop: "24px",
-          borderRadius: "8px",
-          border: "none",
-          fontSize: "16px",
-          cursor: "pointer",
-        }}
+        onClick={pay}
+        style={{ width: "100%", marginTop: "20px", background: "orange", padding: "10px", color: "white", fontWeight: "bold", borderRadius: "5px", border: "none" }}
       >
         Thanh toán
       </button>
 
-      {message && (
-        <div className="mt-4 text-center font-semibold text-red-600">
-          {message}
+      {result && (
+        <div style={{ marginTop: "20px", textAlign: "center", color: "red" }}>
+          {result}
         </div>
       )}
     </div>
