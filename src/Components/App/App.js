@@ -84,6 +84,7 @@ class App extends Component {
           {/* Dùng Routes thay cho Switch, element thay cho component ( ở version 6) */}
           <Route path="/" element={<Products />} />
           <Route path="/add" element={<Add />} />
+          <Route path="/menu" element={<Menu />} />
         </Routes>
       </Router>
       // <Menu></Menu>
