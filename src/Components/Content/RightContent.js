@@ -23,6 +23,7 @@ class RightContent extends Component {
             .catch(error => console.error('Error fetching data:', error));
     }
 
+    
     render() {
         const { products } = this.state;
         // cách dùng getData
