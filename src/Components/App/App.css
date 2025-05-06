@@ -37,3 +37,29 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  padding-left: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgb(212, 129, 20);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: black;
+  cursor: pointer;
+}
+
+/* Active link */
+.nav-link.active {
+  color: red;
+  border-bottom: 2px solid red;
+}
+

@@ -69,28 +69,64 @@
 
 // export default App;
 
-import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import React, { Component } from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Add from "../Add";  
-import Products from "../Products";  
-import Menu from "../Menu";
+// import Add from "../Add";  
+// import Products from "../Products";  
+// import Menu from "../Menu";
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Routes>
-          {/* Dùng Routes thay cho Switch, element thay cho component ( ở version 6) */}
-          <Route path="/" element={<Products />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/menu" element={<Menu />} />
-        </Routes>
-      </Router>
-      // <Menu></Menu>
-    );
-  }
+// class App extends Component {
+//   render() {
+//     return (
+//       <Router>
+//         <Routes>
+//           <Route path="/products" element={<Products />} />
+//           <Route path="/" element={<Add />} />
+//           <Route path="/menu" element={<Menu />} />
+//         </Routes>
+//       </Router>
+//       // <Menu></Menu>
+//     );
+//   }
+// }
+
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import ROUTES from '../routes';
+import './App.css'
+
+function showContentRoutes(routes) {
+  return routes.map((route, index) => (
+    <Route 
+      key={index} 
+      path={route.path} 
+      exact={route.exact}
+      element={route.main} />
+  ));
 }
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <h2>Welcome to Router Page</h2>
+          <ul className="nav-list">
+            <li><NavLink to="/" end className="nav-link">Home</NavLink></li>
+            <li><NavLink to="/contact" className="nav-link">Contact</NavLink></li>
+            <li><NavLink to="/about" className="nav-link">About</NavLink></li>
+          </ul>
+        </nav>
+        <hr />
+        <Routes>
+          {showContentRoutes(ROUTES)}
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
 

@@ -6,6 +6,7 @@ import Two from './Two';
 import Three from './Three';
 import Four from './Four';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
